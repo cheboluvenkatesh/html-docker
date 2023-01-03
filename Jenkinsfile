@@ -14,7 +14,7 @@ pipeline {
         stage('Cloning Git') {
             steps {
               // checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Asuradipati/static-html-docker-server.git']]])
-                 checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/cheboluvenkatesh/static-html-docker-server.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'venkatesh-github-credentials', url: 'https://github.com/cheboluvenkatesh/html-docker.git']]])               
                 //checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/AkurathiHarshitha/static-html-docker-server.git']]])
             }
         }
