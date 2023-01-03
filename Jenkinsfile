@@ -3,9 +3,9 @@ pipeline {
     environment{
         IMAGE_REPO_NAME="authorization_service"
         IMAGE_TAG="practice"
-       // REPOSITORY_URI = "238393102293.dkr.ecr.us-east-2.amazonaws.com/authorization_service"
-      //  AWS_ACCESS_KEY_ID=credentials('Eficens-test-aws-access-key-id')
-      //  AWS_SECRET_ACCESS_KEY=credentials('Eficens-test-secret-key')
+        REPOSITORY_URI = "238393102293.dkr.ecr.us-east-2.amazonaws.com/authorization_service"
+        AWS_ACCESS_KEY_ID=credentials('Eficens-test-aws-access-key-id')
+        AWS_SECRET_ACCESS_KEY=credentials('Eficens-test-secret-key')
     }
         
 
