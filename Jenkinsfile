@@ -36,7 +36,7 @@ pipeline {
       }
     }
    
-    Uploading Docker images into AWS ECR
+  //  Uploading Docker images into AWS ECR
     stage('Logging into AWS ECR') {
            steps {
                 script {
