@@ -36,25 +36,25 @@ pipeline {
       }
     }
    
-    // Uploading Docker images into AWS ECR
-   // stage('Logging into AWS ECR') {
-          //  steps {
-         //       script {
-         //           sh "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-            //    }
+    Uploading Docker images into AWS ECR
+    stage('Logging into AWS ECR') {
+           steps {
+                script {
+                    sh "AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+                }
                  
-          //  }
-     //   }
+            }
+        }
         
-       // stage('Pushing to ECR') {
-       //     steps{  
-         //       script {
-         //           sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
-         ///           sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
-       //             sh "docker images -q ${IMAGE_REPO_NAME}:${IMAGE_TAG} | xargs docker rmi -f"
-       //         }
-      //      }
-       // }
+        stage('Pushing to ECR') {
+            steps{  
+                script {
+                    sh "docker tag ${IMAGE_REPO_NAME}:${IMAGE_TAG} ${REPOSITORY_URI}:$IMAGE_TAG"
+                    sh "docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}:${IMAGE_TAG}"
+                    sh "docker images -q ${IMAGE_REPO_NAME}:${IMAGE_TAG} | xargs docker rmi -f"
+                }
+            }
+        }
    
     }
 }
